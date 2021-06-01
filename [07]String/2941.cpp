@@ -7,10 +7,12 @@ int CROATIA_ALPHABET(string str) {
   
   for(int i = 0; i < str.length(); i++) {
     
-    printf("%c 일때 i = %d \n", str.at(i), i);
+    // printf("%c 일때 i = %d \n", str.at(i), i);
 
     // Case 1 : c로 시작
     if(str.at(i) == 'c' && i < str.length() - 1) {
+      if(i+1 >= str.length())
+        cout << "index out" << "\n";
 
       if(str.at(i + 1) == '=' || str.at(i + 1) == '-')
         i = i + 1; // Increase index
@@ -21,7 +23,9 @@ int CROATIA_ALPHABET(string str) {
     
     // Case 2-1 : dz=
     else if(str.at(i) == 'd' && i < str.length() - 2) {
-      
+      if(i+2 >= str.length())
+        cout << "index out" << "\n";
+        
       if(str.at(i + 1) == 'z' && str.at(i + 2) == '=')
         i = i + 2;
 
@@ -29,7 +33,8 @@ int CROATIA_ALPHABET(string str) {
     
     // Case 2-2 : d-
     else if(str.at(i) == 'd' && i < str.length() - 1) {
-      
+      if(i+1 >= str.length())
+        cout << "index out" << "\n";
       if(str.at(i + 1) == '-')
         i = i + 1;
         
@@ -37,6 +42,8 @@ int CROATIA_ALPHABET(string str) {
     
     // Case 3 : j로 끝
     else if(str.at(i) == 'j' && i != 0) {
+      if(i < 0)
+        cout << "index out" << "\n";
       
       if(str.at(i - 1) == 'l' || str.at(i - 1) == 'n')
         cnt--;
