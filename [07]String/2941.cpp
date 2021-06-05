@@ -2,86 +2,79 @@
 #include <string>
 using namespace std;
 
-int CROATIA_ALPHABET(string str) {
+int CROATIA(string str) {
+  // Count variable
   int cnt = 0;
   
-  for(int i = 0; i < str.length(); i++) {
+  // For-loop for each string alphabet
+  for (int i = 0; i < str.length(); i++) {
     
-    // printf("%c 일때 i = %d \n", str.at(i), i);
-
-    // Case 1 : c로 시작
-    if(str.at(i) == 'c' && i < str.length() - 1) {
-      if(i+1 >= str.length())
-        cout << "index out" << "\n";
-
-      if(str.at(i + 1) == '=' || str.at(i + 1) == '-')
-        i = i + 1; // Increase index
-
-    }
+    cnt++;
     
-    // Case 2 : d로 시작
-    
-    // Case 2-1 : dz=
-    else if(str.at(i) == 'd' && i < str.length() - 2) {
-      if(i+2 >= str.length())
-        cout << "index out" << "\n";
+    // Case 1, End with '=' (z=, c=, s=, dz=)
+    if (str.at(i) == '=' && i > 0) {
+      if (str.at(i - 1) == 'c' || str.at(i - 1) == 's')
+        cnt--;
         
-      if(str.at(i + 1) == 'z' && str.at(i + 2) == '=')
-        i = i + 2;
-
-    }
-    
-    // Case 2-2 : d-
-    else if(str.at(i) == 'd' && i < str.length() - 1) {
-      if(i+1 >= str.length())
-        cout << "index out" << "\n";
-      if(str.at(i + 1) == '-')
-        i = i + 1;
-        
-    }
-    
-    // Case 3 : j로 끝
-    else if(str.at(i) == 'j' && i != 0) {
-      if(i < 0)
-        cout << "index out" << "\n";
-      
-      if(str.at(i - 1) == 'l' || str.at(i - 1) == 'n')
+      else if (str.at(i - 1) == 'z' && i <= 1)
         cnt--;
       
+      else if (str.at(i - 1) == 'z' && i > 1) {
+        if (str.at(i - 2) == 'd')
+          cnt = cnt - 2;
+        else
+          cnt--;
+      }
     }
     
-    // Case 4 : =로 끝
-    else if(str.at(i) == '=' && i != 0) {
-      
-      cnt--;
-      
-      // if(str.at(i - 1) == 's' || str.at(i - 1) == 'z')
-      //   cnt--;
-      // else
-      //   cnt--; 
+    // Case 2, End with '-'
+    else if (str.at(i) == '-' && i > 0) {
+      if (str.at(i - 1) == 'c' || str.at(i - 1) == 'd')
+        cnt--;
     }
     
-    else if(str.at(i) == '-' || str.at(i) == '=')
-      cnt--;
+    // Case 3, End with 'j'
+    else if (str.at(i) == 'j' && i > 0) {
+      if (str.at(i - 1) == 'l' || str.at(i - 1) == 'n')
+        cnt--;
+    }
     
-    // Case 5 : else
-    cnt++;
-
+    printf("In %c, cnt is %d \n", str.at(i), cnt);
   }
   
   return cnt;
 }
 
 int main(void) {
+  // Input string
   string str;
   cin >> str;
   
-  cout << CROATIA_ALPHABET(str) << "\n";
+  // CROATIA Alphabet
+  cout << CROATIA(str) << "\n";
 }
 
-// 판단의 기준
-// c,d로 시작 & j,=로 마무리
+// 핵심 1 : out of bound 문제 발생하지 않도록 생각
+// 핵심 2 : 너무 복잡하게 알고리즘 설계하지 않기
 
-// 일단 하나씩 카운트
+// 기준 1 '=' : c=, dz= (따로 생각), s=, z=
+// 기준 2 '-' : c-, d-
+// 기준 3 'j' : lj, nj
+// 셋 다 뒤로 가면서 찾아야 함!!
+// 일단 안에서 한 글자씩 돌아야지
 
-// 크로아아 알파벳이 맞으면 인덱스 하나 올리기
+/* 
+<처음에 고전했던 이유>
+1. 인덱스 오버 문제
+앞에서부터 조사하게 되니까
+조건이 맞게되면 (i 일때 d고, i+1 일때 z면)
+인덱스를 강제로 +1, +2 하였음.
+-> 이게 out of Bound 문제를 일으킨 주범이 아닌가 생각.
+
+2. if냐 else if도 쓰냐
+뒤에서부터 조사를 하면 i의 조건만 잘 따지면
+out of Bound 문제는 발생하지 않는데,
+if 조건을 어떤 순서로 작성하냐와
+if-else를 사용할 것인지, if-if를 사용할 것인지 여부가
+답을 갈랐음.
+*/
