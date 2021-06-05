@@ -2,34 +2,23 @@
 using namespace std;
 
 int main(void) {
-  // Input A, B, C
-  long long A; // 고정 비용
-  int B; // 가변 비용
-  int C; // 노트북 가격
-  
+  int A, B, C;
   cin >> A >> B >> C;
   
-  // Get Break-Even Point
-  long long bp = 1;
-  
-  if(C < B)
-    printf("-1 \n");
-  
-  else {
-    
-    while (C * bp <= A + (B * bp)) {
-      bp++;
-    }
-    
-    printf("%d \n", bp);
+  if(C <= B) {
+    cout << "-1" << "\n";
+  } else {
+    cout << A / (C - B) + 1 << "\n";
   }
-  
+
+  return 0;
 }
 
-// 고정비용 A
-// 가변비용 B
-// 총 비용 = A+B <-> 총 수입
+// 방정식 구해서 그 x 값에 하나만 넘기면 될거 같은데
 
-// 노트북가격 * x > 1000 + 70 * x 
-
-// 시간초과 관련해서 공부해보기
+/*
+<시간 초과의 이유>
+while 반복문을 돌려버림
+21억이라는 수를 반복문을 돌리니까 시간 초과가 뜨지요
+그냥 방정식으로 구해서 +1 하면 될 문제를!!
+*/
