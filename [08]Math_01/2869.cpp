@@ -1,36 +1,25 @@
+
 #include <iostream>
+#include <cmath>
 using namespace std;
 
-int goSnail(int A, int B, long long V) {
-  int day = 0;
-  int height = 0;
-  
-  while (true) {
-    day++;
-    
-    // 낮에 A미터 올라가기
-    height += A;
-    
-    // 정상에 올라갔는가?
-    if(V <= height)
-      break;
-    
-    // 밤에 B미터 미끄러지기
-    height -= B;
-    
-  }
-  
-  return day;
-  
-}
-
 int main(void) {
-  int A; int B;
-  long long V;
-  
+  long double A, B, V;
   cin >> A >> B >> V;
   
-  cout << goSnail(A, B, V) << "\n";
+  printf("%d \n", (int)ceil((V - A) / (A - B)) + 1);
 }
 
-// 시간대를 나눠서 다 올라가면 즉시 break;
+// 올라갔다가 내려가도 도착 안되는 점까지 간 다음에
+// (2-1)x + 2 >= 5
+// x >= 3
+// (5-1)x + 5 >= 6
+// x >= 1
+// x + 100 >= 1000000000
+// 가능하게 하는 정수보다 1 크게
+
+/*
+<큰 수를 다루는 계산 문제의 경우>
+무작정 반복문을 돌리면 시간 초과가 발생할 확률 큼!!
+따라서 방정식이나 수식을 활용해서 한 번에 구하자!!
+*/
