@@ -1,55 +1,33 @@
-#include <iostream>
+#include <cstdio>
+#include <vector>
+#define MAX 1000001
 using namespace std;
 
-int ERATOS(int n) {
-  if(n == 1)
-    return 0;
-  
-  int bin = 1;
-  
-  for(int i = 2; i <= n; i++) {
-    if(n % i == 0 && n != i) {
-      bin = 0;
-      break;
-    }
-  }
-  
-  return bin;
-}
-
 int main(void) {
-  int a, b;
-  cin >> a >> b;
-  
-  vector<int> prmvc;
-  
-  for(int i = a; i <= b; i++) {
-    prmvc.push_back(i);
-  }
-  
-  for(int i = 0; i < prmvc.size(); i++) {
-    if(ERATOS(i)) {
-      cout << i << "\n";
-    }
+    int M, N;
+    scanf("%d %d", &M, &N);
+
+    vector<bool> num(MAX, true);
     
-    for(int j = 0; j < prmvc.size()/i; j++)
-      v[j]
-  }
-  
+    for(int A = 2; A <= N; A++) {
+        if(num[A])
+            for(int i = 2; i < MAX / A; i++) {
+                num[i * A] = false;
+            }
+    }
+
+    for(int i = M; i <= N; i++) {
+        if(num[i] && i != 1)
+            printf("%d \n", i);
+    }
 }
-
 /*
-반복문을 사실상 제곱만큼 도는 것임
-이미 2의 배수면, 그 다음 2의 배수를 어떻게 못 돌게 할 것인지...
-"생각하는 것 그대로 따라가자"
+<매우 고전했던 문제>
+- 실수 : 분명히 for문을 두 번 돌리면 안되는 시간복잡도였거든... (시간 초과)
+    ㄴ 에라토스 만들어놓고 또 소수 판별 알고리즘 돌려서 시간 초과 만들어 냈다!
+
+- 해결 : 소수 판별 알고리즘을 사용하지 않고도 소수를 판별할 수 있었다! (에라토스테네스의 채)
+    ㄴ 일단 한번 걸러서 소수만 남겨두고, 해당 범위 내에 해당하는 소수들만 뽑아내면 되었다!
+
+- 결론 : 이 알고리즘을 꼭 써야 되었다는 강박관념 버리기
 */
-
-3은 소수야? 응 소수야 출력
-4는 소수야? 소수 아니야 4의 배수는 다 제거
-5는 소수야? 응 소수야 출력
-6은 소수야? 소수 아니야 6의 배수는 다 제거
-7은 소수야? 응 소수야 출력
-
-모든 숫자들을 배열에 담아서
-이게 소수면 출력하고 배수 해당하는 것 배열에서 다 빼고
-
