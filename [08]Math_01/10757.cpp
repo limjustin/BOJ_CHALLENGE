@@ -28,14 +28,30 @@ int main(void) {
     int s1 = str1.length();
     int s2 = str2.length();
 
-    cout << str1 << str1.length() <<  "\n";
-    cout << str2 << str2.length() << "\n";
-
-    for(int i = 0; i < s1 - s2; i++) { // 당연히 길이 늘어나면 length가 바뀌지 ㅋㅋㅋ
-        str2 += "0";
+    for(int i = 0; i < s1 - s2; i++) { // 당연히 길이 늘어나면 length가 바뀌지
+        str2 = "0" + str2;
+        // 문자열의 길이를 늘리면 당연히 length도 늘어남
+        // 따라서 ㄱㅗ저
     }
 
-    cout << str1 << "\n";
-    cout << str2 << "\n";
+    int SUM = 0;
+    int overten = 0;
+    vector<int> v;
+    for(int i = str1.length() - 1; i >= 0; i--) {
+        SUM = str1[i] - 48 + str2[i] - 48 + overten;
 
+        if(SUM < 10) {
+            v.push_back(SUM);
+            overten = 0;
+        } else {
+            v.push_back(SUM % 10);
+            overten = 1;
+            if(i == 0) v.push_back(overten);
+        }
+
+    }
+
+    for(int i = v.size() - 1; i >= 0; i--)
+        printf("%d", v[i]);
+    printf("\n");
 }
