@@ -1,13 +1,13 @@
 # BOJ_CHALLENGE
 
-**Introduction**
+### Introduction
 
 - Ready to Coding Test
 - One day, One Commit
 - Programming Tool : [repl.it](https://replit.com/)
 <br>
 
-**Commit Step**
+### Commit
 
 1. Connect account in repl.it
 - ```git config --list```
@@ -23,3 +23,8 @@
 
 4. Upload
 - Same as github upload
+<br>
+
+### Language
+<br>
+<image src = "https://user-images.githubusercontent.com/55044278/126054928-a676e3a6-e6a4-45a4-9114-c271073bfd6d.png" height = "100px">
