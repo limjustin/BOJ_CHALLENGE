@@ -1,15 +1,12 @@
-#include <iostream>
-
-using namespace std;
+#include <cstdio>
 
 int main(void) {
-  int T;
-  int a, b;
-  
-  cin >> T;
-  
-  for (int i = 1; i <= T; i++) {
-    cin >> a >> b;
-    printf("Case #%d: %d + %d = %d\n", i, a, b, a+b);
-  }
+	int testcase;
+	scanf("%d", &testcase);
+	
+	int a, b;
+	for(int i = 1; i <= testcase; i++) {
+		scanf("%d %d", &a, &b);
+		printf("Case #%d: %d + %d = %d \n", i, a, b, a+b);
+	}
 }

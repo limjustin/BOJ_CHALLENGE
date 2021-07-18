@@ -1,15 +1,12 @@
-#include <iostream>
-
-using namespace std;
+#include <cstdio>
 
 int main(void) {
-  int n;
-  int sum = 0;
-  
-  cin >> n;
-  
-  for(int i = 1; i <= n; i++)
-    sum += i;
+    int num;
+    scanf("%d", &num);
     
-  cout << sum << "\n";
+    int sum = 0;
+    while(num > 0)
+        sum += (num--);
+    
+    printf("%d \n", sum);
 }

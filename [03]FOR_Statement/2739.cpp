@@ -1,14 +1,9 @@
-#include <iostream>
+#include <cstdio>
 
-using namespace std;
-
-int main (void) {
-  int dan;
-  
-  cin >> dan;
-  
-  if (dan >= 1 && dan <= 9) {
-    for (int i = 1; i <= 9; i++)
-      cout << dan << " * " << i << " = " << dan * i << "\n";
-  }
+int main(void) {
+	int dan;
+	scanf("%d", &dan);
+	
+	for(int i = 1; i <= 9; i++)
+		printf("%d * %d = %d \n", dan, i, dan*i);
 }

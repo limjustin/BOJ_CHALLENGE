@@ -1,18 +1,10 @@
-#include <iostream>
-
-using namespace std;
+#include <cstdio>
 
 int main(void) {
-  int a, b;
-  
-  cin >> a >> b;
-  
-  if (a >= -10000 && a <= 10000 && b >= -10000 && b <= 10000) {
-    if (a > b)
-    cout << ">" << "\n";
-    else if (a < b)
-      cout << "<" << "\n";
-    else
-      cout << "==" << "\n";
-  }
+	int a, b;
+	scanf("%d %d", &a, &b);
+	
+	if(a > b) printf("> \n");
+	else if(a < b) printf("< \n");
+	else printf("== \n");
 }

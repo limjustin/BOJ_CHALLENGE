@@ -1,11 +1,7 @@
-#include <iostream>
-
-using namespace std;
+#include <cstdio>
 
 int main(void) {
-  int a, b;
-  
-  while (scanf("%d %d", &a, &b) == 2)
-    cout << a + b << "\n";
-  
+    int a, b;
+    while(scanf("%d %d", &a, &b) != EOF)
+        printf("%d \n", a+b);
 }

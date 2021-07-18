@@ -1,22 +1,13 @@
-#include <iostream>
-
-using namespace std;
+#include <cstdio>
 
 int main(void) {
-  int res;
-  cin >> res;
-  
-  if(res >= 0 && res <= 100) {
-    if (res >= 90 && res <= 100)
-      cout << "A" << "\n";
-    else if (res >= 80 && res <= 89)
-      cout << "B" << "\n";
-    else if (res >= 70 && res <= 79)
-      cout << "C" << "\n";
-    else if (res >= 60 && res <= 69)
-      cout << "D" << "\n";
-    else
-      cout << "F" << "\n";
-  }
-  
+	int score;
+	scanf("%d", &score);
+	
+	if(score >= 90 && score <= 100) printf("A \n");
+	else if(score >= 80 && score <= 89) printf("B \n");
+	else if(score >= 70 && score <= 79) printf("C \n");
+	else if(score >= 60 && score <= 69) printf("D \n");
+	else printf("F \n");
+
 }

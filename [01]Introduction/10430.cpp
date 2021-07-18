@@ -1,14 +1,11 @@
-#include <iostream>
-
-using namespace std;
+#include <cstdio>
 
 int main(void) {
-  int a, b, c;
-  
-  cin >> a >> b >> c;
-  
-  cout << (a+b)%c << "\n";
-  cout << ((a%c)+(b%c))%c << "\n";
-  cout << (a*b)%c << "\n";
-  cout << ((a%c)*(b%c))%c << "\n";
+	int A, B, C;
+	scanf("%d %d %d", &A, &B, &C);
+	
+	printf("%d \n", (A+B)%C);
+	printf("%d \n", ((A%C) + (B%C))%C);
+	printf("%d \n", (A*B)%C);
+	printf("%d \n", ((A%C) * (B%C))%C);
 }

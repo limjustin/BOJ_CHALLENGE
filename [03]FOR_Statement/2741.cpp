@@ -1,12 +1,9 @@
-#include <iostream>
-
-using namespace std;
+#include <cstdio>
 
 int main(void) {
-  int N;
-  
-  cin >> N;
-  
-  for(int i = 1; i <= N; i++)
-    cout << i << "\n";
+	int N;
+	scanf("%d", &N);
+	
+	for(int i = 1; i <= N; i++)
+		printf("%d \n", i);
 }

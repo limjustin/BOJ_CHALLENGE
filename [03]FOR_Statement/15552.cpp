@@ -1,19 +1,13 @@
-#include <iostream>
-#include <stdio.h>
-
-using namespace std;
+#include <cstdio>
 
 int main(void) {
-  int t;
-  int a, b;
-  
-  scanf("%d", &t);
-  
-  
-  for(int i = 1; i <= t; i++) {
-    scanf("%d %d", &a, &b);
-    printf("%d\n", a+b);
-  }
-  
-  return 0;
+	int testcase;
+	scanf("%d", &testcase);
+	
+	int a, b;
+	while(testcase > 0) {
+		scanf("%d %d", &a, &b);
+		printf("%d\n", a+b);
+		testcase--;
+	}
 }

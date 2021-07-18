@@ -1,27 +1,20 @@
-#include <iostream>
-
-using namespace std;
+#include <cstdio>
 
 int main(void) {
-  int h, m;
-  
-  cin >> h >> m;
-  
-  if (m < 45) {
-    // m은 45에 덜 미친 시간만큼 빼주어야 함
-    m = 60 - (45 - m);
-    // h는 줄어들어야 하지만
-    // 0시일경우, 23시로 복귀시켜야 함 (중요)
-    (h == 0) ? h = 24 - 1  : h = h - 1;
-  }
-  else if (m >= 45) {
-    // 그대로 빼면 된다
-    m = m - 45;
-  }
-  
-  cout << h << " " << m << "\n";
+	int hour, min;
+	scanf("%d %d", &hour, &min);
+	
+	if(hour != 0 &&  min < 45) {
+		hour = hour - 1;
+		min = 60 - (45 - min);
+	} else if(min >= 45) {
+		min = min - 45;
+	} else if(hour == 0 && min < 45) {
+		hour = 23;
+		min = 60 - (45 - min);
+	}
+	
+	printf("%d %d \n", hour, min);
 }
 
-/*
-0시에서 시간을 빼면 23시로 가는 처리해주는 것이 핵심!!
-*/
+// 모든 단위를 분으로 바꿔서 풀 수도 있더라!
