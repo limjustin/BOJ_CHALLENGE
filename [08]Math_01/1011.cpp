@@ -58,6 +58,7 @@ void Centauri(int s, int e) {
     int num = e - s - 2;
     int total = 4;
     for(int i = 3; num < (int)pow(2, 31); i++) {
+        printf("log");
         if(num == 1 || num == 2) {
             printf("%d \n", 3);
             break;
