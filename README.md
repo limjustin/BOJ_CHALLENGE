@@ -2,10 +2,10 @@
 
 ### Introduction
 
-- Ready to Coding Test
-- One day, One Commit
-- Programming Tool : [repl.it](https://replit.com/)
-<br>
+- **Goal** : To prepare for the coding test
+- **IDE** : [repl.it](https://replit.com/)
+
+----------
 
 ### Commit
 
@@ -21,9 +21,10 @@
 - ```clang++-7 -pthread -o main (File root)```
 - ```./main```
 
-4. Upload
+4. Upload to git
 - Same as github upload
-<br>
+
+----------
 
 ### Language
 <image src = "https://user-images.githubusercontent.com/55044278/126054928-a676e3a6-e6a4-45a4-9114-c271073bfd6d.png" height = "100px">
