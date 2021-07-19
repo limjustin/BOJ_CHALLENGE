@@ -3,34 +3,26 @@
 using namespace std;
 
 int main(void) {
-  // Input numbers
-  vector<int> inp(10);
-  
-  for(int i = 0; i < inp.size(); i++) {
-    cin >> inp[i];
-  }
-  
-  // Get mod of 42
-  vector<int> res(42); // Because mod is less than 42
-  int md;
-  
-  for(int i = 0; i < inp.size(); i++) {
-    md = inp[i] % 42;
-    res[md]++;
-  }
-  
-  // Count all different numbers (more than 0)
-  int cnt = 0;
-  
-  for(int i = 0; i < res.size(); i++) {
-    if(res[i] > 0)
-      cnt++;
-  }
-  
-  cout << cnt << "\n";
-  
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL); cout.tie(NULL);
+
+    int num; int cnt = 0;
+    vector<bool> v(42, false);
+    
+    for(int i = 0; i < 10; i++) {
+        cin >> num;
+
+        if(!v[num % 42]) {
+            v[num % 42] = true;
+        }
+    }
+
+    for(int i = 0; i < 42; i++) {
+        if(v[i])
+            cnt++;
+    }
+
+    cout << cnt << "\n";
 }
 
-// 서로 다른 수들을 어떻게 카운트하냐가 문제
-// 그냥 벡터를 100개 만드는 것도 나쁘지않은 선택
-// 나머지 나눈 수를 인덱스로 사용해서 그냥 넣어버리기
+// 나머지 구하고 0보다 크면 카운트 안하고 continue

@@ -3,29 +3,20 @@
 using namespace std;
 
 int main(void) {
-  // Input A,B,C
-  int A, B, C;
-  cin >> A;
-  cin >> B;
-  cin >> C;
-  
-  // Get result
-  int res = A * B * C;
-  int dgt;
-  
-  // Count each digit by while-statement
-  vector<int> v(10);
-  
-  while (res > 0) {
-    dgt = res % 10; // Load last digit of res
-    
-    v[dgt]++;
-    
-    res = res / 10;
-  }
-  
-  // Print digit result
-  for (int i = 0; i < v.size(); i++)
-    cout << v[i] << "\n";
-  
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL); cout.tie(NULL);
+
+    int A, B, C, result;
+    cin >> A >> B >> C;
+    result = A * B * C;
+
+    vector<int> v(10, 0);
+
+    while(result) {
+        v[result%10]++;
+        result = result / 10;
+    }
+
+    for(int i = 0; i <= 9; i++)
+        cout << v[i] << "\n";
 }
