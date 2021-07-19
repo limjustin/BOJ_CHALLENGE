@@ -1,45 +1,31 @@
 #include <iostream>
-#include <vector>
 using namespace std;
 
-vector<int> hansoo(1001, 0);
+int HANSOO(int num) {
+    int cnt = 0;
 
-void isHANSOO(int x) {
-  if(x < 100)
-    hansoo[x] = 1;
-    
-  else if(x < 1000) {
-    int origin = x;
-    
-    int c = x % 10;
-    x = x / 10;
-    int b = x % 10;
-    x = x / 10;
-    int a = x % 10;
-    
-    if(2 * b == a + c)
-      hansoo[origin] = 1;
-  }
+    for(int i = 1; i <= num; i++) {
+        if(i < 100) {
+            cnt++;
+            continue;
+        } else if(i == 1000) {
+            break;
+        } else if((i%10) + (i/100) == 2 * ((i % 100) / 10)) {
+            cnt++;
+        }
+    }
+
+    return cnt;
 }
 
 int main(void) {
-  // Input N
-  int N;
-  cin >> N;
-  
-  // Get result less than N
-  int cnt = 0;
-  
-  for(int i = 1; i <= N; i++) {
-    isHANSOO(i);
-    
-    if(hansoo[i] == 1)
-      cnt += 1;
-  }
-  
-  cout << cnt << "\n";
-}
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL); cout.tie(NULL);
 
-// 한자리수 : 무조건 등차수열
-// 두자리수 : 무조건 등차수열
-// 세자리수 : 등차중항 구하면 댐
+    int N;
+    cin >> N;
+
+    int cnt = 0;
+
+    cout << HANSOO(N) << "\n";
+}
