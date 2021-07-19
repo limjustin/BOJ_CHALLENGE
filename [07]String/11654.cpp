@@ -1,10 +1,8 @@
-#include <iostream>
-using namespace std;
+#include <cstdio>
 
 int main(void) {
-  char c;
-  
-  cin >> c;
-  
-  cout << (int)c << "\n";
+    char c;
+    scanf("%c", &c);
+
+    printf("%d \n", (int)c);
 }

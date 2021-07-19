@@ -1,21 +1,22 @@
 #include <iostream>
-#include <string>
 #include <vector>
+#include <string>
 using namespace std;
 
 int main(void) {
-  string str;
-  vector<int> alphabet(26, -1);
-  
-  cin >> str;
-  
-  for(int i = 0; i < alphabet.size(); i++) {
-    for(int s = 0; s < str.length(); s++) {
-      if(str.at(s) == (char)(i + 97) && alphabet[i] == -1) // 중복될땐 뒤에있는 인덱스가 들어가는 문제
-        alphabet[i] = s;
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL); cout.tie(NULL);
+
+    string S;
+    cin >> S;
+
+    vector<int> ALPHABET(26, -1);
+
+    for(int i = 0; i < S.length(); i++) {
+        if(ALPHABET[S.at(i) - 97] == -1)
+            ALPHABET[S.at(i) - 97] = i;
     }
-  }
-  
-  for(int i = 0; i < alphabet.size(); i++)
-    cout << alphabet[i] << " ";
+
+    for(int i = 0; i < ALPHABET.size(); i++)
+        cout << ALPHABET[i] << " ";
 }

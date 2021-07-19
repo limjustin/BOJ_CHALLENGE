@@ -3,24 +3,22 @@
 using namespace std;
 
 int main(void) {
-  // Input test case
-  int T;
-  cin >> T;
-  
-  // Repeat
-  int R;
-  string S;
-  
-  for(int i = 0; i < T; i++) {
-    cin >> R;
-    cin >> S;
-    
-    for(int s = 0; s < S.length(); s++) {
-      for(int r = 0; r < R; r++)
-        cout << S[s];
+    // 이 문제는 왜 이 문장이 안 먹힐까?
+    // ios_base::sync_with_stdio(false);
+    // cin.tie(NULL); cout.tie(NULL);
+
+    int testcase;
+    cin >> testcase;
+
+    while(testcase--) {
+        int R; string S;
+        cin >> R >> S;
+
+        for(int i = 0; i < S.length(); i++) {
+            for(int j = 0; j < R; j++)
+                cout << S.at(i);
+        }
+
+        cout << "\n";
     }
-    
-    cout << "\n";
-  }
-  
 }

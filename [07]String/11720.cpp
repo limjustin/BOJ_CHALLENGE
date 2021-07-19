@@ -3,18 +3,18 @@
 using namespace std;
 
 int main(void) {
-  int N;
-  string numstr;
-  
-  cin >> N;
-  cin >> numstr;
-  
-  int sum = 0;
-  
-  for(int i = 0; i < N; i++) {
-    sum += (numstr.at(i) - 48); // char형에서 48을 빼서 숫자화 시키는 것이 핵심
-  }
-  
-  cout << sum << "\n";
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL); cout.tie(NULL);
 
+    int testcase;
+    cin >> testcase;
+
+    string nums;
+    cin >> nums;
+
+    int sum = 0;
+    for(int i = 0; i < testcase; i++) {
+        sum += nums.at(i) - 48;
+    }
+    cout << sum << "\n";
 }
