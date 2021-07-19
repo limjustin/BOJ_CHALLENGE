@@ -13,7 +13,7 @@
 - ```git config --list```
 - ```git config user.email "E-mail Address" ```
 
-2. Force pull
+2. Update & Pull
 - ```git fetch```
 - ```git reset --hard origin/master```
 
@@ -21,8 +21,10 @@
 - ```clang++-7 -pthread -o main (File root)```
 - ```./main```
 
-4. Upload to git
-- Same as github upload
+4. Upload
+- ```git add (File root)```
+- ```git commit -m (Commit comment)```
+- ```git push origin master```
 
 ----------
 
