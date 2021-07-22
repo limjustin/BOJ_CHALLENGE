@@ -14,6 +14,7 @@ void printStar(int n) {
     for(int i = 1; i <= n/3; i++) {
 
         for(int j = 1; j <= n/3; j++) {
+            if(i == n/9 - 1 || i == n/3 - 1)
             if((i > n/9 && i <= 2*n/9) && (j > n/9 && j <= 2*n/9)) {
                 printf("   ");
             } else {
@@ -49,5 +50,5 @@ int main(void) {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL); cout.tie(NULL);
 
-    printStar(27);
+    printStar(9);
 }
