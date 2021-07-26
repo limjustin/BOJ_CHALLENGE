@@ -1,46 +1,24 @@
 #include <iostream>
 using namespace std;
 
-void getFractions(int num) {
-  
-  int frc = 1;
-  int ltsum = 0;
-    
-  for(int n = 1; num > n*(n+1)/2; n++) {
-    frc++;
-    ltsum = n*(n+1)/2;
-  }
-  
-  int md; int sn;
-  
-  if(frc == 1) // 이러면 1일 때는 특수경우이니 생각해야함!!
-    cout << "1/1" << "\n";
-  
-  else if(frc % 2) {
-    md = frc - (num - ltsum) + 1;
-    sn = frc - md + 1;
-    
-    cout << md << "/" << sn << "\n";  
-  } // 홀수
-  
-  else {
-    sn = frc - (num - ltsum) + 1;
-    md = frc - sn + 1;
-    
-    cout << md << "/" << sn << "\n";
-  } // 짝수
-}
-
 int main(void) {
-  long long X;
-  
-  cin >> X;
-  
-  getFractions(X);
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL); cout.tie(NULL);
+
+    int X;
+    cin >> X;
+
+    for(int i = 1; i < ; i++) {
+        if(N < (i)*(i+1)/2) {
+            int line = i - 1;
+            int mod, son;
+            if(line % 2) {
+                son = 
+                mod = 
+            }
+        }
+    }
 }
 
-// 자릿수의 시작을 구하면 될 듯
-// 1/1 : 1번째 1
-// 2번째의 시작 : 1/2 3
-// 3번째의 시작 : 3/1 6
-// 4번째의 시작 : 1/4 10
+//  n(n+1)/2 넘는 곳에서 해당 수를 구한 다음에 (한 수 앞에 보기)
+// 그 수가 홀수면 분자부터 시작, 짝수면 분모부터 시작
