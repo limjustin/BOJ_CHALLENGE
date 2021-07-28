@@ -1,5 +1,26 @@
 #include <iostream>
+#define MAX 10000000
 using namespace std;
+
+void Fraction(int num) {
+    int idx; int len; int sum = 0;
+    for(int i = 1; sum < MAX ; i++) {
+        sum = i * (i + 1) / 2;
+
+        if(num <= sum) {
+            idx = i;
+            len = sum - num;
+            break;
+        }
+    }
+
+    if(idx % 2) {
+        cout << len + 1 << "/" << idx - len << "\n";
+    } else {
+        cout << idx - len << "/" << len + 1 << "\n";
+    }
+
+}
 
 int main(void) {
     ios_base::sync_with_stdio(false);
@@ -8,17 +29,9 @@ int main(void) {
     int X;
     cin >> X;
 
-    for(int i = 1; i < ; i++) {
-        if(N < (i)*(i+1)/2) {
-            int line = i - 1;
-            int mod, son;
-            if(line % 2) {
-                son = 
-                mod = 
-            }
-        }
-    }
+    Fraction(X);
 }
 
-//  n(n+1)/2 넘는 곳에서 해당 수를 구한 다음에 (한 수 앞에 보기)
-// 그 수가 홀수면 분자부터 시작, 짝수면 분모부터 시작
+// 일단 등차수열의 합 안으로 들어감
+// 짝수면 분모부터, 홀수면 분자부터 (등차수열 합 라인)
+// 1이 남잖아 뺀수 + 1 / 일반항 - 뺀수

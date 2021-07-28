@@ -1,31 +1,33 @@
 #include <iostream>
 using namespace std;
 
-int arr[15][15];
+int Family(int k, int n) {
 
-int LivingFamily(int k, int n) {
-  
-  if(k == 0)
-    return n;
-  
-  if(n == 1)
-    return 1;
+    if(k == 0)
+        return n;
+
+    if(n == 1)
+        return 1;
     
-  return LivingFamily(k, n-1) + LivingFamily(k-1, n);
+    return Family(k-1, n) + Family(k, n-1);
 }
 
 int main(void) {
-  // Input Test case
-  int T;
-  cin >> T;
-  
-  // For-loop each Test case
-  int k; int n;
-  
-  for(int i = 0; i < T; i++) {
-    cin >> k;
-    cin >> n;
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL); cout.tie(NULL);
+
+    int testcase;
+    cin >> testcase;
     
-    cout << LivingFamily(k, n) << "\n";
-  }
+    int k, n;
+    while(testcase--) {
+        cin >> k >> n;
+        cout << getArray(k, n) << "\n";
+    }
 }
+
+// 1 2 3 4 5 (k = 0)
+// 1 3 6 10 15
+// 1 4 10 20 35
+// 1 5 15 35 70
+// 1 6 21 56 126
