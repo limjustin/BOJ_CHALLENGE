@@ -1,33 +1,36 @@
 #include <iostream>
 using namespace std;
 
-int SUGAR(int kg) {
-  int min = kg;
-  int nonkg = 1;
-  
-  for(int i = 0; (5*i) <= kg; i++) { // 0부터 시작!!
-    for(int j = 0; (3*j) <= kg; j++) { // 등호도 붙여야지!!
-      if((5*i) + (3*j) == kg && min > i + j) {
-        min = i + j;
-        nonkg = 0;
-      }
+int Sugar(int num) {
+
+    bool flag = false;
+    int min = num;
+    
+    for(int f = num / 5; f >= 0; f--) {
+        for(int t = 0; t <= num / 3; t++) {
+            if(5*f + 3*t == num) {
+                flag = true;
+                if(min > f + t)
+                    min = f + t;
+            }
+        }
     }
-  }
-  
-  if (nonkg)
-    return -1;
-  else
-    return min;
+
+    if(flag)
+        return min;
+    else
+        return -1;
 }
 
 int main(void) {
-  int N;
-  cin >> N;
-  
-  cout << SUGAR(N) << "\n";
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL); cout.tie(NULL);
+
+    int N;
+    cin >> N;
+
+    cout << Sugar(N) << "\n";
 }
 
-// 5를 먼저 for문으로 돌린 다음에
-// 안에서 3을 for문으로 돌리고
-// 더해지는 값이 그 수가 되면 그때 각각 미지수가 몇이었는지 구하고
-// 최소면 담아두고 아니면 패스
+// 탈출 조건 1 : 안 나누어 떨어질 때 -1 출력
+// 제한 조건 1 : 봉지는 최소로!! (mn 값에 넣기)

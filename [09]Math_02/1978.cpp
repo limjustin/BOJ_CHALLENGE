@@ -1,39 +1,34 @@
 #include <iostream>
 using namespace std;
 
-int isPrime(int num) {
-  // Binary variable
-  int binary = 1;
-  
-  if(num == 1)
-    return 0;
-  
-  // Prime number algorithm
-  for(int i = 2; i <= num; i++) {
-    if(num % i == 0 && num != i) {
-      binary = 0;      
-      break; // Not prime number
+bool Primenum(int num) {
+    if(num == 1)
+        return false;
+
+    for(int i = 2; i <= num; i++) {
+        if((num % i == 0) && num != i)
+            return false;
     }
-  }
-  
-  return binary;
+
+    return true;
 }
 
 int main(void) {
-  // Input variable N
-  int N;
-  cin >> N;
-  
-  // Input numbers
-  int num;
-  int cnt = 0;
-  
-  for (int i = 0; i < N; i++) {
-    cin >> num;
-    
-    if(isPrime(num) == 1)
-      cnt++;
-  }
-  
-  cout << cnt << "\n";
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL); cout.tie(NULL);
+
+    int N;
+    cin >> N;
+
+    int num; int cnt = 0;
+
+    while(N--) {
+        cin >> num;
+        if(Primenum(num))
+            cnt++;
+    }
+
+    cout << cnt << "\n";
 }
+
+// 1000 이하니까 소수 찾기 돌려도 괜춘할 듯!!
