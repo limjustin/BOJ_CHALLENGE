@@ -19,5 +19,13 @@ int main(void) {
             eratos[num * idx] = false;
     }
 
-    
+    // Print result
+    int M, N;
+    cin >> M >> N;
+
+    while(M <= N) {
+        if(eratos[M])
+            cout << M << "\n";
+        M++;
+    }
 }
