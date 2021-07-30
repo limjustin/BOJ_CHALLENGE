@@ -1,33 +1,40 @@
-#include <cstdio>
+#include <iostream>
 #include <vector>
-#define MAX 123456*2
+#define MAX 123456
 using namespace std;
 
-int main(void) {
-    int n;
-    vector<bool> num(MAX + 1, true);
-    num[1] = false;
+int main(void){
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL); cout.tie(NULL);
 
-    for(int i = 2; i <= MAX; i++) {
-        if(num[i])
-            for(int k = 2; k <= MAX/i; k++) {
-                num[k * i] = false;
-            }
+    vector<bool> eratos(MAX*2 + 1, true);
+    eratos[1] = false;
+
+    for(int num = 2; num <= (MAX*2 + 1); num++) {
+        if(!eratos[num])
+            continue;
+        
+        for(int idx = 2; idx <= (MAX*2 + 1) / num; idx++) {
+            eratos[num * idx] = false;
+        }
     }
 
-    while(1) {
-        scanf("%d", &n);
-
-        if(n == 0)
-            break;
-
-        int cnt = 0;
+    int n; int cnt;
+    cin >> n;
+    
+    while(n) {
+        cnt = 0;
 
         for(int i = n + 1; i <= 2*n; i++) {
-            if(num[i] == true)
+            if(eratos[i])
                 cnt++;
         }
+        cout << cnt << "\n";
 
-        printf("%d \n", cnt);
+        cin >> n;
     }
+    
 }
+
+
+// 소수 개수가 123,456 보다 넘는 것도 세야한다는 말임!

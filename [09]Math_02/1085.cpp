@@ -4,21 +4,16 @@ int main(void) {
     int x, y, w, h;
     scanf("%d %d %d %d", &x, &y, &w, &h);
 
-    int mx, my;
-    if(h - y <= y) {
-        my = h - y;
-    } else {
-        my = y;
-    }
+    int mw; int mh;
+    if(w - x > x)
+        mw = x;
+    else
+        mw = w - x;
 
-    if(w - x <= x) {
-        mx = w - x;
-    } else {
-        mx = x;
-    }
+    if(h - y > y)
+        mh = y;
+    else
+        mh = h - y;
 
-    (mx < my) ? printf("%d \n", mx) : printf("%d \n", my);
-
+    (mw > mh) ? printf("%d \n", mh) : printf("%d \n", mw);
 }
-
-// 상하좌우 거리를 다 구한다음에 짧은 쪽으로!

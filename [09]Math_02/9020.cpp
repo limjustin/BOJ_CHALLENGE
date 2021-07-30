@@ -1,30 +1,36 @@
-#include <cstdio>
+#include <iostream>
 #include <vector>
-#define MAX 10000
+#define MAX 10000 // 거꾸로 다시 올라가니까 5000보다 크지!
 using namespace std;
 
 int main(void) {
-    vector<bool> num(MAX + 1, true);
-    num[1] = false;
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL); cout.tie(NULL);
 
-    for(int i = 2; i <= MAX; i++)
-        if(num[i])
-            for(int k = 2; k <= MAX/i; k++)
-                num[k * i] = false;
+    vector<bool> eratos(MAX + 1, true);
+    eratos[1] = false;
 
-    int N;
-    scanf("%d", &N);
-
-    while(N--) {
-        int n;
-        scanf("%d", &n);
-
-        for(int i = n/2; i > 1; i--) {
-            if(num[i] && num[n - i]) {
-                printf("%d %d \n", i , n-i);
-                break;
-            }
+    for(int num = 2; num <= MAX + 1; num++) {
+        if(eratos[num]) {
+            for(int idx = 2; idx <= (MAX + 1) / num; idx++)
+                eratos[num * idx] = false;
         }
     }
 
+    int testcase; int n;
+    cin >> testcase;
+
+    while(testcase--) {
+        cin >> n;
+
+        for(int pt = n/2; pt >= 2; pt--) {
+            if(eratos[pt] && eratos[n - pt]) {
+                cout << pt << " " << n - pt << "\n";
+                break;
+            }
+        }
+
+    }
 }
+
+// 절반부터 시작하면 될 듯?
