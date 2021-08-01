@@ -1,34 +1,34 @@
-#include <cstdio>
+#include <iostream>
 #include <cmath>
+using namespace std;
 
-double ABS(int num) {
-    if(num < 0)
-        num = -num;
-    return num; 
-}   
+void Turret(int x1, int y1, int r1, int x2, int y2, int r2) {
+    double d = sqrt((x2-x1)*(x2-x1) + (y2-y1)*(y2-y1)); // 자료형 주의
+
+    // 가장 예외가 되는 조건은 맨 앞에 쓰도록 하자!!
+    if(d == 0 && r1 == r2) // 항상 어느 조건때문에 답이 틀리는지 확인!!
+        printf("%d \n", -1);
+    else if(abs(r1 - r2) < d && d < r1 + r2)
+        printf("%d \n", 2);
+    else if(r1 + r2 == d || abs(r1 - r2) == d)
+        printf("%d \n", 1);
+    else
+        printf("%d\n", 0);
+}
 
 int main(void) {
-    double x1, y1, r1;
-    double x2, y2, r2;
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL); cout.tie(NULL);
 
-    int n; scanf("%d", &n);
-    double d; // Important : 자료형 꼭 주의해라!! (오백번 강조한다)
-    for(int i = 0; i < n; i++) {
+    int testcase;
+    cin >> testcase;
 
-        scanf("%lf %lf %lf %lf %lf %lf", &x1, &y1, &r1, &x2, &y2, &r2);
-        d = sqrt((x2-x1)*(x2-x1) + (y2-y1)*(y2-y1));
-
-        if (d==0 && r1 == r2) {
-            printf("%d \n", -1);
-        } else if (d==0 && r1 != r2) {
-            printf("%d \n", 0);
-        } else if((r1+r2 > d) && (fabs(r2-r1) < d)) {
-            printf("%d \n", 2);
-        } else if ((r1+r2 == d) || (fabs(r2-r1) == d)) {
-            printf("%d \n", 1);
-        } else if ((r1+r2 < d) || (fabs(r2-r1) > d)) {
-            printf("%d \n", 0);
-        }
+    int x1, y1, r1, x2, y2, r2;
+    while(testcase--) {
+        cin >> x1 >> y1 >> r1 >> x2 >> y2 >> r2;
+        Turret(x1, y1, r1, x2, y2, r2);
     }
+}
 
- }
+// 가장 예외가 되는 조건은 맨 앞으로 쓰도록 하자!!
+// 조건의 배치 순서에 따라서 답이 갈린다는 점 알아두기!!
