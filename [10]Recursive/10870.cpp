@@ -1,17 +1,20 @@
-#include <cstdio>
+#include <iostream>
+using namespace std;
 
-int FIBO(int n) {
-    if (n == 0)
+int Fibonacci(int n) {
+    if(n == 0)
         return 0;
-    else if (n == 1)
+    else if(n == 1)
         return 1;
     else
-        return FIBO(n-1) + FIBO(n-2);
+        return Fibonacci(n - 1) + Fibonacci(n - 2);
 }
 
 int main(void) {
-    int n;
-    scanf("%d", &n);
-    
-    printf("%d \n", FIBO(n));
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL); cout.tie(NULL);
+
+    int num;
+    cin >> num;
+    cout << Fibonacci(num) << "\n";
 }

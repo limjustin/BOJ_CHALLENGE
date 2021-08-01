@@ -1,10 +1,10 @@
 #include <cstdio>
-#define pi 3.14159265358979
+#define PI 3.141592
 
 int main(void) {
-    int R;
-    scanf("%d", &R);
+    double R;
+    scanf("%lf", &R);
 
-    printf("%lf \n", (double)R*R*pi);
-    printf("%lf \n", (double)R*R*2);
+    printf("%.6f \n", R*R*PI);
+    printf("%.6f \n", R*R*2);
 }

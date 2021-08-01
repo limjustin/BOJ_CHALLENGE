@@ -1,17 +1,18 @@
-#include <cstdio>
+#include <iostream>
+using namespace std;
 
-int FACTORIAL(int n) {
-
-    if(n == 1 || n == 0)
+int Factorial(int n) {
+    if(n <= 1)
         return 1;
-    
     else
-        return n * FACTORIAL(n-1);
+        return n * Factorial(n - 1);
 }
 
 int main(void) {
-    int N;
-    scanf("%d", &N);
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL); cout.tie(NULL);
 
-    printf("%d\n", FACTORIAL(N));
+    int num;
+    cin >> num;
+    cout << Factorial(num) << "\n";
 }
