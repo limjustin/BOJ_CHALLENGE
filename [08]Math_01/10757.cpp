@@ -1,57 +1,53 @@
 #include <iostream>
-#include <string>
 #include <vector>
+#include <string>
 using namespace std;
 
-string str1;
-string str2;
-
-void SWAP(string s1, string s2) {
-    string temp;
-    temp = s1;
-    s1 = s2;
-    s2 = temp;
-
-    str1 = s1;
-    str2 = s2;
-}
-
-
 int main(void) {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL); cout.tie(NULL);
 
-    cin >> str1 >> str2;
+    // 숫자 입력받기
+    string A, B;
+    cin >> A >> B;
 
-    if(str1.length() < str2.length())
-        SWAP(str1, str2);
+    // 적은 수 앞에 0을 채워넣기
+    int lenA = A.length();
+    int lenB = B.length();
+    int lenTotal;
 
-    // 이걸 생각 못했네
-    int s1 = str1.length();
-    int s2 = str2.length();
-
-    for(int i = 0; i < s1 - s2; i++) { // 당연히 길이 늘어나면 length가 바뀌지
-        str2 = "0" + str2;
-        // 문자열의 길이를 늘리면 당연히 length도 늘어남
-        // 따라서 고정되는 변수로 인덱스를 잡아주었어야 했다!
+    if(lenA > lenB) { // B가 적은 경우
+        for(int i = 0; i < lenA - lenB; i++)
+            B = "0" + B;
+        lenTotal = lenA;
+    } else { // A가 적은 경우
+        for(int i = 0; i < lenB - lenA; i++)
+            A = "0" + A;
+        lenTotal = lenB;
     }
 
-    int SUM = 0;
-    int overten = 0;
-    vector<int> v;
-    for(int i = str1.length() - 1; i >= 0; i--) {
-        SUM = str1[i] - 48 + str2[i] - 48 + overten;
+    // 두 수를 더하기 (48을 빼면 된다)
+    int upTen = 0;
+    vector<int> result;
 
-        if(SUM < 10) {
-            v.push_back(SUM);
-            overten = 0;
-        } else {
-            v.push_back(SUM % 10);
-            overten = 1;
-            if(i == 0) v.push_back(overten);
+    for(int i = lenTotal - 1; i >= 0; i--) {
+        result.push_back(((A[i] - 48) + (B[i] - 48) + upTen) % 10);
+        
+        if(i == 0 && ((A[i] - 48) + (B[i] - 48) + upTen) >= 10) {
+            result.push_back(1);
+        } else if(((A[i] - 48) + (B[i] - 48) + upTen) >= 10) {
+            upTen = 1;
+        } else if(((A[i] - 48) + (B[i] - 48) + upTen) < 10) {
+            upTen = 0;
         }
-
     }
 
-    for(int i = v.size() - 1; i >= 0; i--)
-        printf("%d", v[i]);
-    printf("\n");
+    for(int i = result.size() - 1; i >= 0; i--) {
+        cout << result[i];
+    }
 }
+
+// 둘 다 string 형식으로 받아야 함
+// 적은 수 앞에 0을 채워넣어주어야 함
+// 맨 뒤의 인덱스부터 더하면 됨
+// (단, 10을 넘어가면 다음 수에 1 더해주는 것까지)
