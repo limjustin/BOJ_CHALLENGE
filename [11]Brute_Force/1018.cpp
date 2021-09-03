@@ -73,3 +73,9 @@ int main(void) {
 
     cout << *min_element(res.begin(), res.end()) << "\n";
 }
+
+/*
+1. 2차원 배열도 매개변수로 고려하자
+2. 문자열 배열일때는 null 문자도 고려하자
+3. 케이스 임의대로 나누지 말자
+*/
