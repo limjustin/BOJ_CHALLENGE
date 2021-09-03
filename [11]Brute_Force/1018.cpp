@@ -64,9 +64,9 @@ int main(void) {
     vector<int> res;
     for(int n = 0; n <= N - 8; n++) {
         for(int m = 0; m <= M - 8; m++) {
-            if(arr[n][m] == 'B')
+                // if로 케이스 나누지 말고 둘 다 들어가야함
+                // 반례) 첫 칸만 잘못 색칠이고 나머지는 잘 색칠일 수 있음
                 res.push_back(PaintBLACK(arr, n, m));
-            else if(arr[n][m] == 'W')
                 res.push_back(PaintWHITE(arr, n, m));
         }
     }
