@@ -39,7 +39,7 @@ int main(void) {
         }
     }
 
-    cout << floor((double)sum/N + 0.5) << "\n";
+    cout << floor((double)sum/N + 0.5) << "\n";  // 반올림할때 floor(num + 0.5) 사용하기
     cout << A[(N-1)/2] << "\n";
     cout << mode << "\n";
     cout << A[N-1] - A[0] << "\n";
