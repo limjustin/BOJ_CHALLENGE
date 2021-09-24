@@ -4,10 +4,7 @@
 using namespace std;
 
 bool compare(pair<int, string> p1, pair<int, string> p2) {
-    if(p1.first == p2.first)
-        continue;
-    else
-        return p1.first < p2.first;
+    return p1.first < p2.first;
 }
 
 int main(void) {
