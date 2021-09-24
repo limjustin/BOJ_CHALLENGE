@@ -4,14 +4,17 @@
 #include <algorithm>
 using namespace std;
 
-bool compare(const pair<string, int> p1, const pair<string, int> p2) {
+bool compare(pair<string, int> p1, pair<string, int> p2) {
+    
+    // if(p1.second == p2.second && p1.first.compare(p2.first) < 0)
+    //     return p1.first < p2.first;
+    // else if(p1.second == p2.second && p1.first.compare(p2.first) > 0)
+    //     return p1.first > p2.first;
+    // else
+    //     return p1.second < p2.second;
 
-    if(p1.second == p2.second && p1.first.compare(p2.first) < 0)
-        return p1.first < p2.first;
-
-    else if(p1.second == p2.second && p1.first.compare(p2.first) > 0)
-        return p1.first > p2.first;    
-        
+    if(p1.second == p2.second)
+        return p1.first < p2.first;  // 그냥 정순이냐 역순이냐 여부, 그 이상의 기능은 안한다?
     else
         return p1.second < p2.second;
 }
@@ -28,27 +31,22 @@ int main(void) {
 
     for(int i = 0; i < N; i++) {
         cin >> str;
-        words.push_back({str, str.length()}); // key가 중복되지 않게
+        words.push_back(make_pair(str, str.length()));
     }
 
-    // cout << "Before Sort \n";
-    // for(auto iter = words.begin(); iter != words.end(); iter++)
-    //     cout << iter->first << "\n";
-
-    // 내 방법
-    // 1. 일단 문자열 비교를 하고 싶은데...
-
     sort(words.begin(), words.end(), compare);
+    words.erase(unique(words.begin(), words.end()), words.end());
+    // unique 함수의 특성
+    // 정렬되지 않은 상태에서 함수를 사용하게 되면 아무런 변화가 없다.
+    // 연속된 중복 원소를 vector의 제일 뒷부분으로 보낸다. (쓰레기 값으로 처리)
+    // unique 함수가 반환하는 값은 쓰레기 값들의 가장 첫 번째 원소
+    // 따라서 중복된 값을 가진 원소들은 삭제된다!
 
-    // words.erase(unique(words.begin(), words.end()), words.end());
-
-    cout << "After Sort \n";
     for(auto iter = words.begin(); iter != words.end(); iter++)
         cout << iter->first << "\n";
 }
 
-// 문자열 비교하기 (compare 함수)
-
-// vector에서 중복원소 제거하기
-
-// stable_sort가 뭔데?
+// 1. compare 함수 내부 정의
+// 2. 중복 값을 어떻게 처리
+    // 처음 입력할 때 부터 (중복은 허용 X) 특성을 이용하여 입력받기 (map의 특성 이용)
+    // 중간에 없애는 코드를 하나 추가할지 (but how?) (완)
